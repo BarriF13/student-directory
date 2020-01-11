@@ -13,10 +13,22 @@ students = [
 "Joffrey Baratheon",
 "Norman Bates"
 ]
-# printing the title
-puts "The students of Villains Academy"
-puts "--------------------------------"
-# using each method to print the list
-  students.each {|student|puts student}
+# making a header
+def print_header
+  puts "The students of Villains Academy"
+  puts "--------------------------------"
+end
+# making the list (body)
+def print_list(names)
+  names.each {|name|puts name}
+end
 # printing the total
-puts "Overall, we have #{students.count} great students"
+def print_footer(names)
+puts "Overall, we have #{names.count} great students"
+end
+
+# calling the methods
+print_header
+# passing students array as argument 
+print_list(students)
+print_footer(students)
