@@ -1,9 +1,41 @@
+#adding the menu
+def interactive_menu
+  students = []
+  loop do
+      
+    # 1.print the menu and ask the user to choose
+    puts "1. Input the students"
+    puts "2. Show the students"
+    puts "9. exit" # ---------9 adding more item later
+    
+    # 2. read the input and save it into a variable
+    selection = gets.chomp
+    
+    # 3. do what the user has asked
+    case selection
+    when "1"
+      students = input_students
+    when "2"
+      # print the student list
+      print_header
+      # passing students array as argument 
+      print_list(students)
+      print_footer(students)
+    when "9"
+      exit # for terminating the program
+    else
+      puts "I don't know what you meant, try again"
+    end 
+    # 4. repeat from step1
+  end
+end
+
 # adding an array for hashes of students
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
     #empty array for students
-  students = []
+    students = []
     #getting the first name
   name = gets.chomp
     # while the name is not empty, repeat this code
@@ -28,12 +60,9 @@ def print_list(students)
 end
 # printing the total
 def print_footer(students)
-puts "Overall, we have #{students.count} great students"
+  puts "Overall, we have #{students.count} great students"
 end
 
-students = input_students
-# calling the methods
-print_header
-# passing students array as argument 
-print_list(students)
-print_footer(students)
+
+interactive_menu
+
