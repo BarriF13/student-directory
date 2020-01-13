@@ -26,6 +26,7 @@ def print_menu
   #----- 1.print the menu and ask the user to choose
   puts "1. Input the students"
   puts "2. Show the students"
+  puts "3. save the list to student.csv"
   puts "9. exit" # ---------9 adding more item later
 end
 
@@ -41,7 +42,9 @@ def process(selection)
     input_students
   when "2"
     show_students
-  when "9"
+    when "3"
+      save_students
+    when "9"
     exit # for terminating the program
   else
     puts "I don't know what you meant, try again"
@@ -60,8 +63,17 @@ end
 def print_footer
   puts "Overall, we have #{@students.count} great students"
 end
-
-
+def save_students
+  # open the file for writing
+  file = File.open("students.csv", "w")
+  @students.each do |student|
+    student_data = [student[:name], student[:cohort]]
+    csv_line = student_data.join(",")
+    file.puts csv_line
+  end 
+  file.close
+end
+  
 interactive_menu
 
 
